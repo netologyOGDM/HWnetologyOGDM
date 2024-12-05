@@ -62,9 +62,9 @@ cool_reviewer.rate_student(best_student, 'Python', 10)
 cool_reviewer.rate_student(best_student, 'Python', 10)
 cool_reviewer.rate_student(best_student, 'Python', 10)
 
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9)
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9)
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9)
+best_student.add_lecturer_grade(cool_lecturer, 'Python', 10)
+best_student.add_lecturer_grade(cool_lecturer, 'Python', 10)
+best_student.add_lecturer_grade(cool_lecturer, 'Python', 10)
  
 print(best_student.grades)
 print(cool_lecturer.grades)
