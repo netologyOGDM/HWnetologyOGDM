@@ -5,7 +5,6 @@ class Student:
         self.gender = gender
         self.finished_courses = []
         self.courses_in_progress = []
-        self.сompleted_courses =[]
         self.grades = {}
         self.add_lecturers_grades = {}  # Словарь для хранения оценок лекторов
 
@@ -23,39 +22,54 @@ class Student:
     def __lt__(self, other):
         if not isinstance(other, Student):
             raise TypeError(f"'<' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() < other._calculate_average_grade()
+
+        result = self._calculate_average_grade() < other._calculate_average_grade()
+        print(f'\n{self.name} имеет средний балл меньше, чем {other.name}: {result}')
+        return result
 
     def __le__(self, other):
         if not isinstance(other, Student):
             raise TypeError(f"'<=' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() <= other._calculate_average_grade()
+
+        result = self._calculate_average_grade() <= other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл меньше или равен, чем {other.name}: {result}')
+        return result
 
     def __gt__(self, other):
         if not isinstance(other, Student):
             raise TypeError(f"'>' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() > other._calculate_average_grade()
+
+        result = self._calculate_average_grade() > other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл больше, чем {other.name}: {result}')
+        return result
 
     def __ge__(self, other):
         if not isinstance(other, Student):
             raise TypeError(f"'>=' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() >= other._calculate_average_grade()
+
+        result = self._calculate_average_grade() >= other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл больше или равен, чем {other.name}: {result}')
+        return result
 
     def __eq__(self, other):
         if not isinstance(other, Student):
-            raise TypeError(f"'==' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
-        return self._calculate_average_grade() == other._calculate_average_grade()
+            raise TypeError(f"'==' not supported between instances of 'Student' and '{type(other).__name__}'")
 
+        result = self._calculate_average_grade() == other._calculate_average_grade()
+        print(f'{self.name} имеет такой же средний балл, как {other.name}: {result}')
+        return result
 
     def __ne__(self, other):
         if not isinstance(other, Student):
-            raise TypeError(f"'!=' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
-        return self._calculate_average_grade() != other._calculate_average_grade()
+            raise TypeError(f"'!=' not supported between instances of 'Student' and '{type(other).__name__}'")
 
+        result = self._calculate_average_grade() != other._calculate_average_grade()
+        print(f'{self.name} имеет другой средний балл, чем {other.name}: {result}')
+        return result
 
     def __str__(self):
         average_grade = self._calculate_average_grade()
-        return f'print(some_student)\nИмя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {average_grade}\nКурсы в процессе изучения: {best_student.courses_in_progress}\nЗавершенные курсы: {best_student.сompleted_courses}'
-
+        return f'\nprint (some_student)\nИмя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {average_grade}\nКурсы в процессе изучения: {self.courses_in_progress}'
 
     def add_lecturer_grade(self, lecturer, course, grade):
         """Метод для добавления оценки лектору"""
@@ -73,7 +87,6 @@ class Student:
         else:
             return 'Ошибка'
 
-
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -86,8 +99,6 @@ class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.add_lecturer_grade = {}
-        #self.grades1 = {}  # Словарь для хранения оценок
-        #self.add_lecturers_grades = {}  # Словарь для хранения оценок лекторов
     def __str__(self):
         return f'Имя: {self.name}\nФамилия: {self.surname}'
 
@@ -103,39 +114,56 @@ class Lecturer(Mentor):
         return round(total_sum / grades_count, 1)
 
     def __lt__(self, other):
-        if not isinstance(other, Student):
-            raise TypeError(f"'<' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() < other._calculate_average_grade()
+        if not isinstance(other, Lecturer):
+            raise TypeError(f"'<' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
+
+        result = self._calculate_average_grade() < other._calculate_average_grade()
+        print(f'\n{self.name} имеет средний балл меньше, чем {other.name}: {result}')
+        return result
 
     def __le__(self, other):
-        if not isinstance(other, Student):
-            raise TypeError(f"'<=' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() <= other._calculate_average_grade()
+        if not isinstance(other, Lecturer):
+            raise TypeError(f"'<=' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
+
+        result = self._calculate_average_grade() <= other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл меньше или равен, чем {other.name}: {result}')
+        return result
 
     def __gt__(self, other):
-        if not isinstance(other, Student):
-            raise TypeError(f"'>' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() > other._calculate_average_grade()
+        if not isinstance(other, Lecturer):
+            raise TypeError(f"'>' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
+
+        result = self._calculate_average_grade() > other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл больше, чем {other.name}: {result}')
+        return result
 
     def __ge__(self, other):
-        if not isinstance(other, Student):
-            raise TypeError(f"'>=' not supported between instances of 'Student' and '{type(other).__name__}'")
-        return self._calculate_average_grade() >= other._calculate_average_grade()
+        if not isinstance(other, Lecturer):
+            raise TypeError(f"'>=' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
+
+        result = self._calculate_average_grade() >= other._calculate_average_grade()
+        print(f'{self.name} имеет средний балл больше или равен, чем {other.name}: {result}')
+        return result
 
     def __eq__(self, other):
-        if not isinstance(other, Student):
+        if not isinstance(other, Lecturer):
             raise TypeError(f"'==' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
-        return self._calculate_average_grade() == other._calculate_average_grade()
+
+        result = self._calculate_average_grade() == other._calculate_average_grade()
+        print(f'{self.name} имеет такой же средний балл, как {other.name}: {result}')
+        return result
 
     def __ne__(self, other):
-        if not isinstance(other, Student):
+        if not isinstance(other, Lecturer):
             raise TypeError(f"'!=' not supported between instances of 'Lecturer' and '{type(other).__name__}'")
-        return self._calculate_average_grade() != other._calculate_average_grade()
+
+        result = self._calculate_average_grade() != other._calculate_average_grade()
+        print(f'{self.name} имеет другой средний балл, чем {other.name}: {result}')
+        return result
 
     def __str__(self):
         average_grade = self._calculate_average_grade()
         return f'print(some_lecturer)\nИмя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {average_grade}'
-
 
 class Reviewer(Mentor):
     def __init__(self, name, surname):
@@ -151,31 +179,55 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
     def __str__(self):
-        return f'print(some_reviewer)\nИмя: {self.name}\nФамилия: {self.surname}'
+        return f'\nprint(some_reviewer)\nИмя: {self.name}\nФамилия: {self.surname}'
 
-#course1 = "Python"
-#course2 = "Git"
-course3 = "Введение в программирование"
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python','Git']
-best_student.сompleted_courses += ['Введение в програмирование']
+best_student1 = Student('Ruoy', 'Eman', 'M')
+best_student1.courses_in_progress += ['Python','Git']
+best_student2 = Student('Sarah', 'Megan', 'F')
+best_student2.courses_in_progress += ['Python','Введение в програмирование']
 
-cool_lecturer = Lecturer('Some', 'Buddy')
-cool_lecturer.courses_attached += ['Python']
+cool_lecturer1 = Lecturer('Nikolay', 'Ivanov')
+cool_lecturer1.courses_attached += ['Python','Git']
+cool_lecturer2 = Lecturer('Olga', 'Petrova')
+cool_lecturer2.courses_attached += ['Python','Введение в програмирование']
 
-cool_reviewer = Reviewer('Some', 'Buddy')
-cool_reviewer.courses_attached += ['Python']
+cool_reviewer1 = Reviewer('Mihail', 'Volkov')
+cool_reviewer1.courses_attached += ['Python','Git']
+cool_reviewer2 = Reviewer('Irina', 'Zaiceva')
+cool_reviewer2.courses_attached += ['Python','Введение в програмирование']
 
-cool_reviewer.rate_student(best_student, 'Python', 10)
-cool_reviewer.rate_student(best_student, 'Python', 10)
-cool_reviewer.rate_student(best_student, 'Python', 9.6)
+cool_reviewer1.rate_student(best_student1, 'Python', 10)
+cool_reviewer1.rate_student(best_student1, 'Python', 10)
+
+cool_reviewer2.rate_student(best_student2, 'Python', 5)
+cool_reviewer2.rate_student(best_student2, 'Python', 5)
 
 # Студент ставит оценку лектору
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9.9)
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9.9)
-best_student.add_lecturer_grade(cool_lecturer, 'Python', 9.9)
+best_student1.add_lecturer_grade(cool_lecturer1, 'Python', 10)
+best_student1.add_lecturer_grade(cool_lecturer1, 'Python', 9)
 
-print(cool_reviewer)
-print(cool_lecturer)
-print (best_student)
+best_student2.add_lecturer_grade(cool_lecturer2, 'Python', 10)
+best_student2.add_lecturer_grade(cool_lecturer2, 'Python', 10)
+
+
+print(best_student1 < best_student2)
+print(best_student1 <= best_student2)
+print(best_student1 > best_student2)
+print(best_student1 >= best_student2)
+print(best_student1 == best_student2)
+print(best_student1 != best_student2)
+
+print(cool_lecturer1 < cool_lecturer2)
+print(cool_lecturer1 <= cool_lecturer2)
+print(cool_lecturer1 > cool_lecturer2)
+print(cool_lecturer1 >= cool_lecturer2)
+print(cool_lecturer1 == cool_lecturer2)
+print(cool_lecturer1 != cool_lecturer2)
+
+print (best_student1)
+print (best_student2)
+print (cool_reviewer1)
+print (cool_reviewer2)
+print (cool_lecturer1)
+print (cool_lecturer2)
